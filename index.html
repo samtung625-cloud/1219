@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ff9f1c">
+<title>2026 濟州島 3天2夜自駕行程</title>
+<style>
+:root{
+  --orange:#ff9f1c;
+  --orange2:#ff7a00;
+  --orangeSoft:#fff3df;
+  --cream:#fffaf3;
+  --ink:#24303f;
+  --muted:#6b7280;
+  --line:#f0dcc0;
+  --card:#ffffff;
+  --green:#5f9f74;
+  --blue:#4e87c7;
+  --shadow:0 10px 30px rgba(125,82,25,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 15% 2%, rgba(255,176,64,.20), transparent 26%),
+    linear-gradient(180deg,#fffdf9 0%,var(--cream) 100%);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.58;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{max-width:720px;margin:auto;padding:0 14px 48px}
+.hero{
+  position:relative; overflow:hidden;
+  margin:0 -14px 16px; padding:calc(30px + env(safe-area-inset-top)) 22px 26px;
+  background:linear-gradient(135deg,#ffb13b 0%,#ff8b19 68%,#ff7612 100%);
+  color:white; border-radius:0 0 28px 28px;
+  box-shadow:0 12px 28px rgba(255,130,20,.22)
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.15)
+}
+.hero:before{width:150px;height:150px;right:-52px;top:18px}
+.hero:after{width:88px;height:88px;right:70px;bottom:-40px}
+.kicker{font-size:13px;font-weight:800;letter-spacing:.12em;opacity:.9}
+h1{font-size:30px;line-height:1.15;margin:8px 0 8px}
+.hero p{margin:0;font-size:14px;opacity:.95}
+.orange-row{display:flex;gap:5px;margin-top:15px;font-size:25px}
+.topnav{
+  position:sticky;top:0;z-index:20;display:flex;gap:8px;
+  overflow:auto;padding:9px 2px 10px;margin-bottom:8px;
+  background:rgba(255,250,243,.90);backdrop-filter:blur(10px)
+}
+.topnav a{
+  flex:0 0 auto;background:white;border:1px solid var(--line);border-radius:999px;
+  padding:8px 13px;font-size:13px;font-weight:800;box-shadow:0 3px 12px rgba(80,50,10,.05)
+}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.summary{
+  background:var(--card);border:1px solid #f2e4d1;border-radius:18px;padding:14px;
+  box-shadow:var(--shadow)
+}
+.summary.full{grid-column:1/-1}
+.summary .label{font-size:12px;color:var(--muted);font-weight:800}
+.summary .big{font-size:18px;font-weight:900;margin-top:2px}
+.summary .small{font-size:13px;color:#58606b;margin-top:4px}
+.section-title{
+  display:flex;align-items:center;gap:9px;font-size:22px;font-weight:950;
+  margin:27px 2px 12px
+}
+.section-title .dot{width:12px;height:12px;background:var(--orange);border-radius:50%;box-shadow:0 0 0 5px var(--orangeSoft)}
+.dayhead{
+  background:linear-gradient(135deg,#fff4dd,#fffaf2);border:1px solid #f3d8af;
+  border-radius:21px;padding:17px;margin:8px 0 13px
+}
+.dayhead .day{font-size:13px;color:var(--orange2);font-weight:900;letter-spacing:.04em}
+.dayhead h2{font-size:23px;margin:3px 0 4px}
+.dayhead p{margin:0;color:#6d6258;font-size:13px}
+.card{
+  position:relative;background:var(--card);border:1px solid #efe3d4;border-radius:20px;
+  padding:16px;margin:10px 0;box-shadow:var(--shadow)
+}
+.card .time{color:var(--orange2);font-size:13px;font-weight:900;margin-bottom:4px}
+.card h3{font-size:18px;margin:0 0 3px;line-height:1.32}
+.kr{font-size:13px;color:var(--muted);font-weight:700}
+.desc{font-size:14px;margin:9px 0 0;color:#47505c}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{font-size:12px;padding:4px 9px;border-radius:999px;background:#fff4df;color:#8d5200;font-weight:800}
+.tag.blue{background:#eef6ff;color:#2d649d}
+.tag.green{background:#edf8f0;color:#3b7650}
+.route{
+  margin:7px 0 7px 12px;padding-left:17px;border-left:2px dashed #f3bf73;
+  color:#7a6043;font-size:12px;font-weight:700
+}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}
+.action{
+  border:0;border-radius:12px;padding:10px 9px;text-align:center;
+  font-weight:900;font-size:13px;cursor:pointer
+}
+.action.map{background:#fff0d7;color:#a55700}
+.action.copy{background:#eef5ff;color:#2b66a2}
+.note{
+  background:#fff7e9;border-left:4px solid var(--orange);border-radius:12px;
+  padding:11px 12px;margin-top:10px;font-size:13px;color:#654b28
+}
+.warn{
+  background:#fff1ef;border-left:4px solid #e36d5d;border-radius:12px;
+  padding:11px 12px;margin-top:10px;font-size:13px;color:#714038
+}
+.choice{
+  border:1px dashed #e8b970;background:#fffaf3;border-radius:15px;padding:12px;margin-top:10px
+}
+.choice strong{color:#9d5700}
+.checklist{
+  background:white;border:1px solid #eee0cf;border-radius:20px;padding:13px 14px;box-shadow:var(--shadow)
+}
+.checkitem{
+  display:flex;align-items:flex-start;gap:11px;padding:10px 2px;border-bottom:1px solid #f4ede5
+}
+.checkitem:last-child{border-bottom:0}
+.checkitem input{width:21px;height:21px;margin-top:2px;accent-color:var(--orange)}
+.checkitem label{font-size:14px;font-weight:700;flex:1}
+.checkitem input:checked + label{text-decoration:line-through;color:#9ca3af}
+.mini{font-size:12px;color:var(--muted);font-weight:600}
+.footer{
+  text-align:center;color:#8b8176;font-size:12px;margin-top:28px;padding:18px 6px
+}
+.pill{
+  display:inline-block;background:#fff0d6;color:#9a5700;border-radius:999px;
+  padding:5px 9px;font-size:12px;font-weight:900;margin-top:8px
+}
+@media(max-width:410px){
+  h1{font-size:27px}
+  .summary-grid{grid-template-columns:1fr}
+  .summary.full{grid-column:auto}
+  .actions{grid-template-columns:1fr}
+}
+@media print{
+  .topnav,.actions{display:none}
+  body{background:white}
+  .card,.summary,.checklist{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">JEJU ROAD TRIP · 2026</div>
+  <h1>濟州島 3天2夜自駕</h1>
+  <p>12/19（六）～12/21（一）｜4位大人・兩對情侶</p>
+  <div class="orange-row" aria-label="橘子裝飾">🍊 🍊 🍊</div>
+</header>
+
+<nav class="topnav">
+  <a href="#overview">總覽</a>
+  <a href="#day1">Day 1</a>
+  <a href="#day2">Day 2</a>
+  <a href="#day3">Day 3</a>
+  <a href="#check">Checklist</a>
+</nav>
+
+<section id="overview">
+  <div class="section-title"><span class="dot"></span>行程總覽</div>
+
+  <div class="summary-grid">
+    <div class="summary full">
+      <div class="label">✈️ 去程｜12/19（六）</div>
+      <div class="big">ZE886　桃園 T1 03:05 → 濟州 06:05</div>
+      <div class="small">飛行時間：約 2 小時</div>
+    </div>
+    <div class="summary full">
+      <div class="label">✈️ 回程｜12/21（一）</div>
+      <div class="big">ZE885　濟州 22:40 → 桃園 T1 00:05＋1</div>
+      <div class="small">飛行時間：約 2 小時 25 分</div>
+    </div>
+
+    <div class="summary">
+      <div class="label">🏨 12/19 住宿</div>
+      <div class="big">Casaloma Hotel</div>
+      <div class="small">西歸浦市區</div>
+    </div>
+    <div class="summary">
+      <div class="label">🏨 12/20 住宿</div>
+      <div class="big">Ventimo Hotel</div>
+      <div class="small">濟州市／蓮洞商圈</div>
+    </div>
+
+    <div class="summary full">
+      <div class="label">🚙 LOTTE Rent-a-Car｜Jeju Autohouse</div>
+      <div class="big">Seltos 2WD (G) 5P</div>
+      <div class="small">
+        取車：12/19 07:30　｜　還車：12/21 19:30<br>
+        地址：92, Yonghae-ro, Jeju-si, Jeju-do, Korea<br>
+        CDW：0 KRW Excess　｜　租車總額：275,306 KRW
+      </div>
+      <div class="pill">營業時間 06:00～23:00</div>
+      <div class="actions">
+        <button class="action map" onclick="openNaver('LOTTE Rent-a-Car Jeju Autohouse')">NAVER Map</button>
+        <button class="action copy" onclick="copyText('92, Yonghae-ro, Jeju-si, Jeju-do, Korea')">複製地址</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="day1">
+  <div class="dayhead">
+    <div class="day">12/19（六） · DAY 1</div>
+    <h2>西部海岸・山茶花・黑豬肉</h2>
+    <p>重點：早午餐 → 涯月海景 → 冬季山茶花 → 黑豬肉</p>
+  </div>
+
+  <article class="card">
+    <div class="time">06:05 抵達</div>
+    <h3>濟州國際機場</h3>
+    <div class="desc">入境、領行李後，依 LOTTE Rent-a-Car 指示搭接駁車前往 Jeju Autohouse。</div>
+    <div class="route">→ 07:30 取車，開始自駕</div>
+  </article>
+
+  <article class="card">
+    <div class="time">約 09:00</div>
+    <h3>大元家</h3><div class="kr">대원가</div>
+    <div class="desc">招牌活鮑魚海鮮鍋，當作第一天早午餐。</div>
+    <div class="tags"><span class="tag">海鮮鍋</span><span class="tag green">第一餐</span></div>
+    <div class="actions">
+      <button class="action map" onclick="openNaver('대원가 제주')">NAVER Map</button>
+      <button class="action copy" onclick="copyText('대원가')">複製韓文名</button>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="time">上午</div>
+    <h3>涯月漢潭海岸</h3><div class="kr">애월 한담해안</div>
+    <div class="desc">海岸散步、看海拍照，不走完整步道，保留體力。</div>
+    <div class="tags"><span class="tag blue">海景</span><span class="tag">散步</span></div>
+    <div class="actions">
+      <button class="action map" onclick="openNaver('애월 한담해안')">NAVER Map</button>
+      <button class="action copy" onclick="copyText('애월 한담해안')">複製韓文名</button>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="time">接近中午</div>
+    <h3>Haejigae Cafe</h3><div class="kr">해지개</div>
+    <div class="desc">涯月特色海景咖啡廳，安排充裕時間坐著看海、休息。</div>
+    <div class="tags"><span class="tag blue">海景咖啡</span><span class="tag green">放鬆</span></div>
+    <div class="actions">
+      <button class="action map" onclick="openNaver('해지개 제주')">NAVER Map</button>
+      <button class="action copy" onclick="copyText('해지개')">複製韓文名</button>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="time">下午</div>
+    <h3>Camellia Hill 山茶花之丘</h3><div class="kr">카멜리아힐</div>
+    <div class="desc">12 月冬季山茶花重點景點，園區散步、賞花拍照。</div>
+    <div class="tags"><span class="tag">山茶花</span><span class="tag green">冬季主景點</span></div>
+    <div class="actions">
+      <button class="action map" onclick="openNaver('카멜리아힐')">NAVER Map</button>
+      <button class="action copy" onclick="copyText('카멜리아힐')">複製韓文名</button>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="time">晚餐｜二選一</div>
+    <h3>黑豬肉燒烤</h3>
+
+    <div class="choice">
+      <strong>A｜熟成到 中文店</strong>
+      <div class="kr">숙성도 중문점</div>
+      <div class="desc">第一選擇。熟成黑豬肉、熱門店，後續確認候位／訂位方式。</div>
+      <div class="actions">
+        <button class="action map" onclick="openNaver('숙성도 중문점')">NAVER Map</button>
+        <button class="action copy" onclick="copyText('숙성도 중문점')">複製韓文名</button>
+      </div>
+    </div>
+
+    <div class="choice">
+      <strong>B｜Black Pork BBQ</strong>
+      <div class="desc">備案。位於 Casaloma Hotel 附近，炭火黑豬肉、店員協助代烤；第一天若較累或想小酌，這個動線更舒服。</div>
+      <div class="actions">
+        <button class="action map" onclick="openNaver('Black Pork BBQ Seogwipo')">NAVER Map</button>
+        <button class="action copy" onclick="copyText('Black Pork BBQ Seogwipo')">複製名稱</button>
+      </div>
+    </div>
+
+    <div class="note">若選 B：先到 Casaloma Hotel 停車／入住，再步行或短程計程車前往。</div>
+  </article>
+
+  <article class="card">
+    <div class="time">晚間</div>
+    <h3>入住 Casaloma Hotel</h3><div class="kr">까사로마호텔</div>
+    <div class="desc">晚上不再追加景點，早點休息。</div>
+    <div class="actions">
+      <button class="action map" onclick="openNaver('까사로마호텔')">NAVER Map</button>
+      <button class="action copy" onclick="copyText('까사로마호텔')">複製韓文名</button>
+    </div>
+  </article>
+</section>
+
+<section id="day2">
+  <div class="dayhead">
+    <div class="day">12/20（日） · DAY 2</div>
+    <h2>天候二選一｜牛島 or 1100高地</h2>
+    <p>前一晚／當天早上依海況、船班、降雪與道路狀況決定</p>
+  </div>
+
+  <article class="card">
+    <div class="time">DAY 2 決策原則</div>
+    <h3>A／B 方案怎麼選？</h3>
+    <div class="choice">
+      <strong>A｜晴朗、風小、船班正常 → 半天牛島</strong>
+      <div class="desc">把牛島當作當天主行程，不再另外塞正房瀑布、偶來市場或其他東部景點。</div>
+    </div>
+    <div class="choice">
+      <strong>B｜海況不佳、牛島船班不穩；山區有雪且道路可通行 → 1100高地賞雪</strong>
+      <div class="desc">保留正房瀑布＋偶來市場午餐，再前往1100高地看冬季雪景。</div>
+    </div>
+    <div class="warn">若1100道路也遇到積雪管制／結冰封閉，就取消山區行程，改成西歸浦＋濟州市區輕鬆版。</div>
+  </article>
+
+  <article class="card">
+    <div class="time">A方案｜晴朗、船班正常</div>
+    <h3>半天牛島</h3>
+    <div class="desc">Day 2 直接走：Casaloma → 城山港 → 牛島 → 城山午餐 → Ventimo → 烤腸。</div>
+    <div class="choice"><strong>08:00 左右｜Casaloma Hotel 出發</strong><div class="desc">直接前往城山港，預留停車、買票與登船時間。</div></div>
+    <div class="choice">
+      <strong>09:30～10:00 左右｜城山港搭船</strong>
+      <div class="kr">성산포항 종합여객터미널</div>
+      <div class="desc">租車留在城山港，不把租賃車開上牛島；上島後改搭環島巴士或其他島內交通。</div>
+      <div class="actions"><button class="action map" onclick="openNaver('성산포항 종합여객터미널')">NAVER Map</button><button class="action copy" onclick="copyText('성산포항 종합여객터미널')">複製韓文名</button></div>
+    </div>
+    <div class="choice">
+      <strong>10:00～13:30｜牛島半日</strong><div class="kr">우도</div>
+      <div class="desc">不追求全島踩點：① 黑沙灘／東岸海景 ② 牛島峰或附近海岸景觀 ③ 花生冰淇淋／花生甜點＋海景咖啡。</div>
+      <div class="tags"><span class="tag blue">離島海景</span><span class="tag">花生甜點</span><span class="tag green">3～4小時</span></div>
+      <div class="actions"><button class="action map" onclick="openNaver('우도 제주')">NAVER Map</button><button class="action copy" onclick="copyText('우도')">複製韓文名</button></div>
+    </div>
+    <div class="choice"><strong>13:30～14:00 左右｜搭船回城山港</strong><div class="desc">回到本島後再吃午餐，不在牛島硬塞太多餐點。</div></div>
+    <div class="choice"><strong>14:00～15:00｜城山周邊午餐</strong><div class="desc">建議海鮮、鮑魚或海女料理；餐廳先保留彈性。</div></div>
+    <div class="choice"><strong>15:00～16:30｜返回濟州市</strong><div class="desc">直接回 Ventimo Hotel，不再追加涉地可支或城山日出峰。</div></div>
+  </article>
+
+  <article class="card">
+    <div class="time">B方案｜牛島不適合、山區可通行</div>
+    <h3>1100高地賞雪＋西歸浦</h3>
+    <div class="desc">Day 2 走：Casaloma → 正房瀑布 → 偶來市場 → 1100高地 → Ventimo → 烤腸。</div>
+    <div class="choice">
+      <strong>上午｜正房瀑布</strong><div class="kr">정방폭포</div><div class="desc">西歸浦代表自然景觀，停留約45～60分鐘。</div>
+      <div class="actions"><button class="action map" onclick="openNaver('정방폭포')">NAVER Map</button><button class="action copy" onclick="copyText('정방폭포')">複製韓文名</button></div>
+    </div>
+    <div class="choice">
+      <strong>中午｜西歸浦每日偶來市場</strong><div class="kr">서귀포매일올레시장</div><div class="desc">午餐＋市場小吃＋伴手禮採買。</div>
+      <div class="note">推薦：橘子麻糬、鯖魚生魚片／現切海鮮、鮑魚飯捲、黑豬肉串、橘子果汁。四人每樣買1～2份分著吃即可。</div>
+      <div class="actions"><button class="action map" onclick="openNaver('서귀포매일올레시장')">NAVER Map</button><button class="action copy" onclick="copyText('서귀포매일올레시장')">複製韓文名</button></div>
+    </div>
+    <div class="choice">
+      <strong>下午｜1100高地賞雪</strong><div class="kr">1100고지 휴게소</div>
+      <div class="desc">以雪景、霧淞與冬季森林為主，不安排長程登山，抓約60～90分鐘。</div>
+      <div class="tags"><span class="tag">雪景</span><span class="tag green">冬季限定</span></div>
+      <div class="actions"><button class="action map" onclick="openNaver('1100고지 휴게소')">NAVER Map</button><button class="action copy" onclick="copyText('1100고지 휴게소')">複製韓文名</button></div>
+      <div class="warn">冬季1100道路可能因積雪、結冰或交通管制無法通行。當天以官方道路管制與實際路況為準，安全優先。</div>
+    </div>
+    <div class="choice"><strong>傍晚｜沿1100道路返回濟州市</strong><div class="desc">直接入住 Ventimo Hotel，不再追加其他景點。</div></div>
+  </article>
+
+  <article class="card">
+    <div class="time">A／B 共同行程｜傍晚</div>
+    <h3>入住 Ventimo Hotel</h3><div class="kr">벤티모 호텔 앤 레지던스 제주</div>
+    <div class="desc">停好車後晚上不再開車。</div>
+    <div class="actions"><button class="action map" onclick="openNaver('벤티모 호텔 앤 레지던스 제주')">NAVER Map</button><button class="action copy" onclick="copyText('벤티모 호텔 앤 레지던스 제주')">複製韓文名</button></div>
+  </article>
+
+  <article class="card">
+    <div class="time">A／B 共同行程｜19:30 晚餐</div>
+    <h3>第一烤腸 濟州直營店</h3><div class="kr">제일곱창 제주직영점</div>
+    <div class="desc">第二晚指定韓牛烤腸。車留飯店，晚餐可小酌；餐後逛蓮洞商圈。</div>
+    <div class="actions"><button class="action map" onclick="openNaver('제일곱창 제주직영점')">NAVER Map</button><button class="action copy" onclick="copyText('제일곱창 제주직영점')">複製韓文名</button></div>
+  </article>
+</section>
+
+<section id="day3">
+  <div class="dayhead">
+    <div class="day">12/21（一） · DAY 3</div>
+    <h2>送機・濟州市區・採買</h2>
+    <p>09:00 前送另一對情侶到機場，之後兩人自由活動</p>
+  </div>
+
+  <article class="card">
+    <div class="time">早上</div>
+    <h3>早餐 → Ventimo Hotel 出發</h3>
+    <div class="desc">預留交通緩衝，目標 09:00 前把另一對情侶送達濟州機場。</div>
+  </article>
+
+  <article class="card">
+    <div class="time">09:00 前</div>
+    <h3>濟州國際機場送機</h3>
+    <div class="desc">另一對情侶於此先離開，之後剩 2 人繼續自駕。</div>
+  </article>
+
+  <article class="card">
+    <div class="time">上午</div>
+    <h3>龍頭岩</h3><div class="kr">용두암</div>
+    <div class="desc">機場附近海岸景點；若下雨或風太大就直接取消。</div>
+    <div class="actions">
+      <button class="action map" onclick="openNaver('용두암')">NAVER Map</button>
+      <button class="action copy" onclick="copyText('용두암')">複製韓文名</button>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="time">上午～中午</div>
+    <h3>濟州東門市場</h3><div class="kr">동문재래시장</div>
+    <div class="desc">採買伴手禮、濟州橘、零食等。</div>
+    <div class="actions">
+      <button class="action map" onclick="openNaver('동문재래시장')">NAVER Map</button>
+      <button class="action copy" onclick="copyText('동문재래시장')">複製韓文名</button>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="time">中午</div>
+    <h3>濟州市午餐</h3>
+    <div class="desc">餐廳暫不指定，可依前兩天沒吃到的料理決定。</div>
+  </article>
+
+  <article class="card">
+    <div class="time">14:00～17:00｜依天氣二選一</div>
+    <h3>下午自由活動</h3>
+    <div class="choice">
+      <strong>A｜天氣好</strong>
+      <div class="desc">梨湖木筏海邊 <span class="kr">이호테우해변</span> ＋ 海景咖啡廳</div>
+      <div class="actions">
+        <button class="action map" onclick="openNaver('이호테우해변')">NAVER Map</button>
+        <button class="action copy" onclick="copyText('이호테우해변')">複製韓文名</button>
+      </div>
+    </div>
+    <div class="choice">
+      <strong>B｜天氣不好</strong>
+      <div class="desc">蓮洞商圈 → Olive Young／免稅店／採買 → 咖啡廳</div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="time">晚間</div>
+    <h3>最後晚餐 → 加油 → 還車</h3>
+    <div class="desc">
+      19:30 前往 LOTTE Rent-a-Car Jeju Autohouse 還車，完成後搭接駁車前往濟州機場。
+    </div>
+    <div class="warn">回程 ZE885 22:40 起飛。建議不要把最後晚餐拖太晚。</div>
+    <div class="actions">
+      <button class="action map" onclick="openNaver('LOTTE Rent-a-Car Jeju Autohouse')">NAVER Map</button>
+      <button class="action copy" onclick="copyText('92, Yonghae-ro, Jeju-si, Jeju-do, Korea')">複製還車地址</button>
+    </div>
+  </article>
+</section>
+
+<section id="check">
+  <div class="section-title"><span class="dot"></span>互動 Checklist</div>
+  <div class="checklist">
+    <div class="checkitem"><input type="checkbox" id="c1"><label for="c1">護照、國際駕駛執照（IDP）已帶齊</label></div>
+    <div class="checkitem"><input type="checkbox" id="c2"><label for="c2">LOTTE 租車取車文件／付款卡已準備</label></div>
+    <div class="checkitem"><input type="checkbox" id="c3"><label for="c3">Day 1 黑豬肉晚餐 A／B 已確認</label></div>
+    <div class="checkitem"><input type="checkbox" id="c4"><label for="c4">Day 2 已依天候確認 A牛島／B1100高地方案</label></div>
+    <div class="checkitem"><input type="checkbox" id="c4b"><label for="c4b">Day 2 烤腸營業／候位狀況已確認</label></div>
+    <div class="checkitem"><input type="checkbox" id="c5"><label for="c5">兩間飯店地址已存在導航 App</label></div>
+    <div class="checkitem"><input type="checkbox" id="c6"><label for="c6">12/21 09:00 前送另一對情侶到機場</label></div>
+    <div class="checkitem"><input type="checkbox" id="c7"><label for="c7">12/21 還車前完成加油</label></div>
+    <div class="checkitem"><input type="checkbox" id="c8"><label for="c8">12/21 19:30 前抵達 LOTTE Jeju Autohouse 還車</label></div>
+  </div>
+  <div class="mini" style="margin:8px 3px 0">✓ 勾選狀態會保存在這台手機／瀏覽器。</div>
+</section>
+
+<div class="footer">
+  🍊 濟州小旅行｜手機版行程<br>
+  餐廳、咖啡廳營業時間與公休日可能調整，出發前請再次確認。<br>
+  車程標示為行程規劃估計，實際以當天導航與路況為準。
+</div>
+</div>
+
+<script>
+function openNaver(q){
+  const url = 'https://map.naver.com/p/search/' + encodeURIComponent(q);
+  window.open(url,'_blank');
+}
+async function copyText(t){
+  try{
+    await navigator.clipboard.writeText(t);
+    toast('已複製：' + t);
+  }catch(e){
+    const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); ta.remove(); toast('已複製：' + t);
+  }
+}
+function toast(msg){
+  const old=document.getElementById('toast'); if(old) old.remove();
+  const el=document.createElement('div'); el.id='toast'; el.textContent=msg;
+  Object.assign(el.style,{
+    position:'fixed',left:'50%',bottom:'24px',transform:'translateX(-50%)',
+    background:'#24303f',color:'#fff',padding:'10px 14px',borderRadius:'999px',
+    fontSize:'12px',fontWeight:'800',zIndex:'9999',boxShadow:'0 6px 22px rgba(0,0,0,.22)'
+  });
+  document.body.appendChild(el); setTimeout(()=>el.remove(),1800);
+}
+document.querySelectorAll('.checkitem input').forEach(cb=>{
+  const key='jeju-trip-'+cb.id;
+  cb.checked=localStorage.getItem(key)==='1';
+  cb.addEventListener('change',()=>localStorage.setItem(key,cb.checked?'1':'0'));
+});
+</script>
+</body>
+</html>
